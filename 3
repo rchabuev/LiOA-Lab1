@@ -1,0 +1,20 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#include <Windows.h>
+
+int main(void)
+{
+	SetConsoleOutputCP(1251); //русификация
+	srand(time(NULL));
+	int c;
+	printf("Введите размер массива: ");
+	scanf_s("%d", &c);
+	int *A = (int*)malloc(c * sizeof(int));
+	printf("Массив произвольного размера: ");
+	for (int i = 0; i < c; i++)
+	{
+		A[i] = rand() % 100;
+		printf(" %d", A[i]);
+	}
+}
