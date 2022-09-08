@@ -1,0 +1,17 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#include <Windows.h>
+
+int main(void)
+{
+	SetConsoleOutputCP(1251); //русификация
+	srand(time(NULL));
+	int A[10];
+	printf("Массив, заполненный случайными числами:");
+	for (int i = 0; i < 10; i++)
+	{
+		A[i] = rand() % 100;
+		printf(" %d", A[i]);
+	}
+}
