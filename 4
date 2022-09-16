@@ -7,23 +7,35 @@ int main(void)
 {
 	SetConsoleOutputCP(1251); //русификация
 	srand(time(NULL));
-	int A[10][8];
-	int SumArr[10];
+	int a, b;
+	printf("Введите размер двумерного массива:\n");
+	scanf_s("%d", &a);
+	scanf_s("%d", &b);
+	int** A = (int**)malloc(a * sizeof(int*));
+	for (int j = 0; j < b; j++)
+	{
+		A[j] = (int*)malloc(b * sizeof(int));
+	}
 	printf("Двумерный массив:\n");
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 8; j++) {
-			A[i][j] = rand() % 2; //заполнение массива случайными числами
+	for (int i = 0; i < a; i++) {
+		for (int j = 0; j < b; j++) {
+			A[i][j] = rand() % 2;	 //заполнение массива случайными числами
 			printf(" %d ", A[i][j]);
 		}
 		printf("\n");
 	}
+	int *C = (int*)malloc(a * sizeof(int));
+	int sum = 0;
 	printf("Сумма элементов в каждой строке:\n");
-	for (int i = 0; i < 10; i++) {
-		int sum = 0;
-		for (int j = 0; j < 8; j++) {
+	for (int i = 0; i < a; i++) {
+		for (int j = 0; j < b; j++) {
 			sum += A[i][j];
-			SumArr[i] = sum;
+			C[i] = sum;
 		}
-		printf("%d\n", SumArr[i]);
+		printf("%d\n", C[i]);
+		sum = 0;
 	}
+	free(C);
+	free(A);
+	return 0;
 }
